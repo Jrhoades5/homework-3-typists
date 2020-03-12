@@ -8,6 +8,21 @@ int main() {
 	IntListA.push_front(4);
 	IntListA.print();
 	IntListA.print_back();
+	//test here
+	std::cout << "testing = operator overload" << std::endl;
+	IntListA.push_front(9);
+	IntListA.push_front(7);
+	IntListA.push_front(0);
+	IntListA.push_front(23);
+	IntListA.print();
+	List<int> Test_List;
+	Test_List.print();
+	Test_List.push_front(8);
+	Test_List.push_front(6);
+	Test_List.print();
+	Test_List = IntListA;
+	Test_List.print();
+	std::cout << "End testing" << std::endl;
 
 	std::cout << std::endl;
 

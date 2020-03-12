@@ -148,12 +148,18 @@ class List {
 			}
 			std::cout << std::endl;
 		}
-	
-		// List &operator=(const List &list) {
 
-		// return
+		//assignment operator overload	
+		List &operator=(List &list) {
+				
+			while (list._front -> next != nullptr){
+				push_back(list._front -> value);
+				list._front = list._front -> next;	
+			}
+			return *this;
+			
 
-		// }
+		}
 
 		template<typename V> bool operator==(const List<V> &a) {
 			Dlist *loc1;
