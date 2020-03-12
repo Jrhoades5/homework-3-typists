@@ -17,7 +17,7 @@ class List {
 		void reccopy(const Dlist *ptr) {
 			if(ptr) { // if(ptr != nullptr) {
 				reccopy(ptr->next);
-				add_frontnode(ptr->value);
+				push_front(ptr->value);
 			}
 		}
 	public:
@@ -37,7 +37,7 @@ class List {
 		~List() {
 			while(!empty()) {
 			//while(_size > 0) {
-				rm_frontnode();
+				pop_front();
 			}
 		}
 
@@ -57,7 +57,7 @@ class List {
 			return _size;
 		}
 
-		void add_frontnode(Data data) {
+		void push_front(Data data) {
 			Dlist *newNode = new Dlist;
 			newNode->value = data;
 			newNode->prev = nullptr;
@@ -75,7 +75,7 @@ class List {
 			_size++;
 		}
 
-		void add_backnode(Data data) {
+		void push_back(Data data) {
 			Dlist *newNode = new Dlist;
 			newNode->value = data;
 			newNode->next=nullptr;
@@ -94,7 +94,7 @@ class List {
 			_size+=1;
 		}
 
-		void rm_frontnode() {
+		void pop_front() {
 			Dlist *front_to_delete = _front;
 			_front = _front->next;
 
@@ -110,7 +110,7 @@ class List {
 		}
 
 		//CONVERT THIS FUNCTION
-		void rm_backnode() {
+		void pop_back() {
 			Dlist *back_to_remove = _back;
 
 			if(_front->next!=nullptr) {
