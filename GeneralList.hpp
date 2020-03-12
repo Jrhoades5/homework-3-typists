@@ -17,7 +17,7 @@ class List {
 		void reccopy(const Dlist *ptr) {
 			if(ptr) { // if(ptr != nullptr) {
 				reccopy(ptr->next);
-				push_front(ptr->value);
+				add_frontnode(ptr->value);
 			}
 		}
 	public:
@@ -37,7 +37,7 @@ class List {
 		~List() {
 			while(!empty()) {
 			//while(_size > 0) {
-				pop_front();
+				rm_frontnode();
 			}
 		}
 
@@ -57,7 +57,7 @@ class List {
 			return _size;
 		}
 
-		void push_front(Data data) {
+		void add_frontnode(Data data) {
 			Dlist *newNode = new Dlist;
 			newNode->value = data;
 			newNode->prev = nullptr;
@@ -68,14 +68,14 @@ class List {
 			}
 			else {
 				newNode->next=_front;
-				_front->back = newNode;
+				_front->prev = newNode;
 			}
 
 			_front=newNode;
 			_size++;
 		}
 
-		void push_back(Data data) {
+		void add_backnode(Data data) {
 			Dlist *newNode = new Dlist;
 			newNode->value = data;
 			newNode->next=nullptr;
@@ -94,7 +94,7 @@ class List {
 			_size+=1;
 		}
 
-		void pop_front() {
+		void rm_frontnode() {
 			Dlist *front_to_delete = _front;
 			_front = _front->next;
 
@@ -110,11 +110,11 @@ class List {
 		}
 
 		//CONVERT THIS FUNCTION
-		void pop_back() {
-			Llist *back_to_remove = _back;
+		void rm_backnode() {
+			Dlist *back_to_remove = _back;
 
 			if(_front->next!=nullptr) {
-				Llist *new_back = _front;
+				Dlist *new_back = _front;
 				while(new_back->next!=_back) {
 					new_back=new_back->next;
 				}
@@ -130,17 +130,51 @@ class List {
 			_size-=1;
 		}
 
-		// leave this alone
+		// Leave this alone!
 		bool empty() const {
 			return ((_front==nullptr) && (_back==nullptr));
 		}
-
-		//Modify this
+		
+		// Modify this.
 		void print() {
-			Llist *temp;
+			Dlist *temp; // Changed to Dlist by Lloyd.
 			for(temp=_front; temp!=nullptr; temp=temp->next) {
 				std::cout << temp->value << " ";
 			}
 			std::cout << std::endl;
+		}
+
+		void print_back(){
+			Dlist *temp;
+			for(temp=_back; temp != nullptr; temp=temp->prev){
+				std::cout << temp->value << " ";
+			}
+			std::cout << std::endl;
+		}
+		
+		// List &operator=(const List &list) {
+
+		// return
+
+		// }
+
+		// template<typename V> bool operator==(const List<V> &a, const List<V> &b)
+		template<typename V> bool operator!=(const List<V> &a) {
+
+			if (_size == a._size) {
+				while (true) {
+
+
+
+					// Evaluate the loop at the end.
+
+
+
+				       	if (_front -> next == nullptr) {
+						break;
+					}
+				}
+				std::cout << "a size is not equal to b size." << std::endl;
+			}
 		}
 };
