@@ -109,21 +109,18 @@ class List {
 			_size -= 1;
 		}
 
-		//CONVERT THIS FUNCTION
+		//CONVERT THIS FUNCTION. OKAY, WE DID!
 		void pop_back() {
 			Dlist *back_to_remove = _back;
 
-			if(_front->next!=nullptr) {
-				Dlist *new_back = _front;
-				while(new_back->next!=_back) {
-					new_back=new_back->next;
-				}
-				new_back->next=nullptr;
-				_back=new_back;
+			if(_front != _back) {
+				Dlist *new_back = _back->prev;
+				new_back->next = nullptr;
+				_back = new_back;
 			}
 			else {
-				_front=nullptr;
-				_back=nullptr;
+				_front = nullptr;
+				_back = nullptr;
 			}
 
 			delete back_to_remove;
