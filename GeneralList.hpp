@@ -151,30 +151,56 @@ class List {
 			}
 			std::cout << std::endl;
 		}
-		
+	
 		// List &operator=(const List &list) {
 
 		// return
 
 		// }
 
-		// template<typename V> bool operator==(const List<V> &a, const List<V> &b)
-		template<typename V> bool operator!=(const List<V> &a) {
-
+		template<typename V> bool operator==(const List<V> &a) {
+			Dlist *loc1;
+			Dlist *loc2;
 			if (_size == a._size) {
-				while (true) {
-
-
-
-					// Evaluate the loop at the end.
-
-
-
-				       	if (_front -> next == nullptr) {
-						break;
-					}
+				if (_front == nullptr && a._front == nullptr) {
+					return true;
 				}
-				std::cout << "a size is not equal to b size." << std::endl;
+				loc1 = _front;
+				loc2 = a._front;
+				while (true) {
+				// Evaluate the loop at the end.
+					if (loc1->value != loc2->value) {
+						return false;
+					}
+				       	if (loc1 -> next == nullptr) {
+						return true;
+					}
+					loc1 = loc1 -> next;
+					loc2 = loc2 -> next;
+				}
+			}
+		}
+
+		template<typename V> bool operator!=(const List<V> &a) {
+			Dlist *loc1;
+			Dlist *loc2;
+			if (_size == a._size) {
+				if (_front == nullptr && a._front == nullptr) {
+					return false;
+				}
+				loc1 = _front;
+				loc2 = a._front;
+				while (true) {
+				// Evaluate the loop at the end.
+					if (loc1->value != loc2->value) {
+						return true;
+					}
+				       	if (loc1 -> next == nullptr) {
+						return false;
+					}
+					loc1 = loc1 -> next;
+					loc2 = loc2 -> next;
+				}
 			}
 		}
 };

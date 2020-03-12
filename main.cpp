@@ -41,17 +41,15 @@ int main() {
 	}
 	FloatListD.print();
 
-	FloatList FloatListE=FloatListD;
-	/*
+	FloatList FloatListE=FloatListD;	
 	if(FloatListE==FloatListD) {
 		std::cout << "Float vectors are the same!" << std::endl;
 	}
 
-	FloatListE.push_front(1.0);
-
+	// FloatListE.push_front(1.0);
 	if(FloatListE!=FloatListD) {
 		std::cout << "Float vectors are not the same!" << std::endl;
 	}
-	*/
+
 	return 0;
 }
