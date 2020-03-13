@@ -151,14 +151,18 @@ class List {
 
 		//assignment operator overload	
 		List &operator=(List &list) {
-				
-			while (list._front -> next != nullptr){
-				push_back(list._front -> value);
-				list._front = list._front -> next;	
-			}
-			return *this;
+			//Make sure the list on the left is empty or empty
+			//it to prevent memory leaks		
+			while (!empty()) {
+				pop_front();
+			}	
 			
-
+			_front=nullptr;
+			_back=nullptr;
+			_size=0;
+			reccopy(list._front);
+			
+			return *this;
 		}
 
 		template<typename V> bool operator==(const List<V> &a) {
